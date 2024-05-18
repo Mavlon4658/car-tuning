@@ -18,26 +18,60 @@ let selectModalParentSwp = new Swiper('.select_modal .swiper-parent', {
     slidesPerView: 'auto',
     speed: 500,
     spaceBetween: 60,
-    // loop: true,
     centeredSlides: true,
     mousewheel: true,
-    // freeMode: true,
     initialSlide: 4,
+    navigation: {
+        nextEl: '.select_modal .swiper-parent__btn_next',
+        prevEl: '.select_modal .swiper-parent__btn_prev'
+    }
 })
-let selectModalChildSwps = document.querySelectorAll('.select_modal .swiper-child');
+
+let selectModalChildSwps = document.querySelectorAll('.select_modal .swiper-child__item');
 if (selectModalChildSwps.length) {
     selectModalChildSwps.forEach(el => {
-        let swp = new Swiper(el, {
+        let swp = new Swiper(el.querySelector('.swiper'), {
             direction: "vertical",
             slidesPerView: 'auto',
             speed: 500,
             spaceBetween: 60,
-            // loop: true,
             centeredSlides: true,
             mousewheel: true,
-            // freeMode: true,
+            navigation: {
+                nextEl: el.querySelector('.swiper-child__btn_next'),
+                prevEl: el.querySelector('.swiper-child__btn_prev')
+            }
+        })
+
+        el.querySelectorAll('.swiper .swiper-slide button').forEach((btn, btnID) => {
+            btn.onclick = () => {
+                swp.slideTo(btnID);
+            }
         })
     })
+
+    document.querySelectorAll('.select_modal .swiper-parent button').forEach((btn, btnID) => {
+        btn.onclick = () => {
+            selectModalParentSwp.slideTo(btnID)
+        }
+    })
+
+    selectModalParentSwp.on('slideChange', function (e) {
+        let index = selectModalParentSwp.activeIndex;
+        checkChildSwp(index)
+    });
+
+    checkChildSwp(selectModalParentSwp.activeIndex)
+    
+    function checkChildSwp (index) {
+        selectModalChildSwps.forEach((el, elID) => {
+            if (index == elID) {
+                el.classList.add('active');
+            } else {
+                el.classList.remove('active');
+            }
+        })
+    }
 }
 
 let selectModalOpen = document.querySelectorAll('.select_modal__open'),
@@ -49,4 +83,49 @@ if (selectModalOpen.length) {
             selectModal.classList.add('active');
         }
     })
+}
+
+
+
+if (selectModal) {
+    selectModal.onmousemove = e => {
+        if (window.innerWidth / 2 > e.clientX) {
+            contentLeftShow();
+        } else {
+            ContentRightShow();
+        }
+    }
+    selectModal.onmouseleave = e => {
+        ContentHide();
+    }
+}
+
+let contentLeft = document.querySelector('.select_modal .content_left'),
+    contentRight = document.querySelector('.select_modal .content_right'),
+    parentBtn = document.querySelector('.select_modal .swiper-parent__btn'),
+    parentSlide = document.querySelector('.select_modal .swiper-parent'),
+    swiperChildWrap = document.querySelector('.select_modal .swiper-child_wrap');
+
+function contentLeftShow () {
+    contentLeft.classList.add('active');
+    contentRight.classList.remove('active')
+    parentBtn.classList.add('active');
+    parentSlide.classList.add('active');
+    swiperChildWrap.classList.remove('active')
+}
+
+function ContentRightShow () {
+    contentLeft.classList.remove('active');
+    contentRight.classList.add('active')
+    parentBtn.classList.remove('active');
+    parentSlide.classList.remove('active');
+    swiperChildWrap.classList.add('active')
+}
+
+function ContentHide () {
+    contentLeft.classList.remove('active');
+    contentRight.classList.remove('active')
+    parentBtn.classList.remove('active');
+    parentSlide.classList.remove('active');
+    swiperChildWrap.classList.remove('active')
 }

@@ -146,7 +146,6 @@ body {
   height: 100%;
   background: #000000;
   color: #ffffff;
-  transform: translateX(100%);
   transition: 0.3s ease all;
 }
 .select_modal.active {
@@ -164,10 +163,20 @@ body {
 .select_modal__content .content_left {
   width: 50%;
   height: 100%;
+  background: transparent;
+  transition: 0.3s ease all;
+}
+.select_modal__content .content_left.active {
+  background: #E40000;
 }
 .select_modal__content .content_right {
   width: 50%;
   height: 100%;
+  background: transparent;
+  transition: 0.3s ease all;
+}
+.select_modal__content .content_right.active {
+  background: #E40000;
 }
 .select_modal__swipers {
   position: absolute;
@@ -182,7 +191,6 @@ body {
   margin-top: 50vh;
   transform: translateY(-50%);
   height: calc(100vh - 246px);
-  overflow: hidden;
   display: flex;
   align-items: flex-start;
   position: relative;
@@ -195,7 +203,7 @@ body {
   width: 100%;
   height: 5px;
   background: #ffffff;
-  transform: translateY(65px);
+  transform: translateY(55px);
 }
 .select_modal__swipers .swiper {
   -webkit-user-select: none;
@@ -203,9 +211,20 @@ body {
           user-select: none;
 }
 .select_modal__swipers .swiper-parent {
-  overflow: visible;
   width: 50%;
   height: 100%;
+}
+.select_modal__swipers .swiper-parent__btn {
+  position: absolute;
+  top: 50%;
+  left: -166px;
+  transform: translate(-100%, -15%);
+  flex-direction: column;
+  gap: 51px;
+  display: none;
+}
+.select_modal__swipers .swiper-parent__btn.active {
+  display: flex;
 }
 .select_modal__swipers .swiper-parent .swiper-slide {
   height: auto;
@@ -223,15 +242,40 @@ body {
   font-size: 50px;
   color: #ffffff;
 }
+.select_modal__swipers .swiper-parent.active .swiper-slide button {
+  color: #fff;
+}
 .select_modal__swipers .swiper-child {
   width: 100%;
   height: 100%;
-  overflow: visible;
 }
 .select_modal__swipers .swiper-child_wrap {
   width: 50%;
   height: 100%;
   padding-left: 132px;
+}
+.select_modal__swipers .swiper-child_wrap.active .swiper-child__item.active .swiper-child__btn {
+  display: flex;
+}
+.select_modal__swipers .swiper-child_wrap.active .swiper-child__item.active .swiper-slide button {
+  color: #ffffff;
+}
+.select_modal__swipers .swiper-child__item {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.select_modal__swipers .swiper-child__item:not(.active) {
+  display: none;
+}
+.select_modal__swipers .swiper-child__btn {
+  position: absolute;
+  top: 50%;
+  right: -197px;
+  transform: translate(100%, -15%);
+  flex-direction: column;
+  gap: 51px;
+  display: none;
 }
 .select_modal__swipers .swiper-child .swiper-slide {
   height: auto;
