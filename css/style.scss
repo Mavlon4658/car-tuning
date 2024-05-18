@@ -303,11 +303,18 @@ body {
 
     .swiper {
         position: relative;
+        height: 100vh;
+        background: #575656;
 
         &-slide {
             position: relative;
             z-index: 1;
             height: 100vh;
+            
+            // &:not(.swiper-slide-active) {
+            //     height: 0;
+            //     overflow: hidden;
+            // }
         }
 
         &_btn {

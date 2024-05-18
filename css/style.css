@@ -255,6 +255,8 @@ body {
 }
 .home .swiper {
   position: relative;
+  height: 100vh;
+  background: #575656;
 }
 .home .swiper-slide {
   position: relative;
