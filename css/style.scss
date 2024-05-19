@@ -207,6 +207,10 @@ body {
     transition: .3s ease all;
     transform: translateX(100%);
 
+    @include media(-768) {
+        display: none !important;
+    }
+
     &.active {
         transform: translateX(0);
     }
@@ -679,6 +683,7 @@ body {
             left: 0;
             width: 100%;
             z-index: 2;
+            display: none;
             
             &__container {
                 max-width: 1680px;
@@ -687,6 +692,10 @@ body {
                 height: 400px;
 
                 @include media(1720) {
+                    max-width: calc(100% - 40px);
+                }
+                
+                @include media(768) {
                     max-width: calc(100% - 40px);
                 }
             }
@@ -729,6 +738,18 @@ body {
 
         @include media(1720) {
             max-width: calc(100% - 20px);
+            padding: 0;
+        }
+
+        @include media(1250) {
+            max-width: 528px;
+            justify-content: flex-start;
+            padding-top: 172px;
+        }
+
+        @include media(768) {
+            max-width: calc(100% - 40px);
+            padding-top: 95px;
         }
     }
 
@@ -739,13 +760,69 @@ body {
         font-weight: 900;
         line-height: 80%;
 
+        @include media(1250) {
+            font-size: 110px;
+            margin: 96px 0 0;
+        }
+
+        @include media(768) {
+            font-size: 80px;
+            margin: 110px 0 0;
+            white-space: break-spaces;
+            width: 100%;
+        }
+
         br {
             display: none;
+
+            @include media(1250) {
+                display: block;
+            }
         }
+    }
+
+    &__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        img {
+            width: 23px;
+        }
+    }
+
+    &__subtitle {
+
     }
 
     .btn_dark {
         width: 416px;
+
+        @include media(1250) {
+            position: absolute;
+            bottom: 189px;
+            width: 100%;
+            left: 0;
+            height: 50px;
+            padding: 0 20px;
+            justify-content: space-between;
+            background: $color-red;
+            
+            span {
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            img {
+                width: 23px;
+                transform: translate(0) !important;
+            }
+        }
+
+        @include media(768) {
+            bottom: 55px;
+        }
     }
 }
 // Home end

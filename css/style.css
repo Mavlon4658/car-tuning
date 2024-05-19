@@ -174,6 +174,11 @@ body {
   transition: 0.3s ease all;
   transform: translateX(100%);
 }
+@media screen and (min-width: 768px) {
+  .mobile_menu {
+    display: none !important;
+  }
+}
 .mobile_menu.active {
   transform: translateX(0);
 }
@@ -621,6 +626,7 @@ body {
   left: 0;
   width: 100%;
   z-index: 2;
+  display: none;
 }
 .home .swiper_btn__container {
   max-width: 1680px;
@@ -629,6 +635,11 @@ body {
   height: 400px;
 }
 @media screen and (max-width: 1720px) {
+  .home .swiper_btn__container {
+    max-width: calc(100% - 40px);
+  }
+}
+@media screen and (max-width: 768px) {
   .home .swiper_btn__container {
     max-width: calc(100% - 40px);
   }
@@ -667,6 +678,20 @@ body {
 @media screen and (max-width: 1720px) {
   .home__container {
     max-width: calc(100% - 20px);
+    padding: 0;
+  }
+}
+@media screen and (max-width: 1250px) {
+  .home__container {
+    max-width: 528px;
+    justify-content: flex-start;
+    padding-top: 172px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .home__container {
+    max-width: calc(100% - 40px);
+    padding-top: 95px;
   }
 }
 .home__title {
@@ -676,9 +701,62 @@ body {
   font-weight: 900;
   line-height: 80%;
 }
+@media screen and (max-width: 1250px) {
+  .home__title {
+    font-size: 110px;
+    margin: 96px 0 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .home__title {
+    font-size: 80px;
+    margin: 110px 0 0;
+    white-space: break-spaces;
+    width: 100%;
+  }
+}
 .home__title br {
   display: none;
 }
+@media screen and (max-width: 1250px) {
+  .home__title br {
+    display: block;
+  }
+}
+.home__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.home__head img {
+  width: 23px;
+}
 .home .btn_dark {
   width: 416px;
+}
+@media screen and (max-width: 1250px) {
+  .home .btn_dark {
+    position: absolute;
+    bottom: 189px;
+    width: 100%;
+    left: 0;
+    height: 50px;
+    padding: 0 20px;
+    justify-content: space-between;
+    background: #E40000;
+  }
+  .home .btn_dark span {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .home .btn_dark img {
+    width: 23px;
+    transform: translate(0) !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .home .btn_dark {
+    bottom: 55px;
+  }
 }/*# sourceMappingURL=style.css.map */
