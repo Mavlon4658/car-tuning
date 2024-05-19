@@ -17,10 +17,15 @@ let selectModalParentSwp = new Swiper('.select_modal .swiper-parent', {
     direction: "vertical",
     slidesPerView: 'auto',
     speed: 500,
-    spaceBetween: 60,
+    spaceBetween: 40,
     centeredSlides: true,
     mousewheel: true,
     initialSlide: 4,
+    breakpoints: {
+        768: {
+            spaceBetween: 60
+        }
+    },
     navigation: {
         nextEl: '.select_modal .swiper-parent__btn_next',
         prevEl: '.select_modal .swiper-parent__btn_prev'
@@ -34,9 +39,14 @@ if (selectModalChildSwps.length) {
             direction: "vertical",
             slidesPerView: 'auto',
             speed: 500,
-            spaceBetween: 60,
+            spaceBetween: 40,
             centeredSlides: true,
             mousewheel: true,
+            breakpoints: {
+                768: {
+                    spaceBetween: 60
+                }
+            },
             navigation: {
                 nextEl: el.querySelector('.swiper-child__btn_next'),
                 prevEl: el.querySelector('.swiper-child__btn_prev')
@@ -75,12 +85,19 @@ if (selectModalChildSwps.length) {
 }
 
 let selectModalOpen = document.querySelectorAll('.select_modal__open'),
-    selectModal = document.querySelector('.select_modal');
+    selectModal = document.querySelector('.select_modal'),
+    selectModalClose = document.querySelectorAll('.select_modal__clsoe');
 
 if (selectModalOpen.length) {
     selectModalOpen.forEach(btn => {
         btn.onclick = () => {
             selectModal.classList.add('active');
+        }
+    })
+
+    selectModalClose.forEach(btn => {
+        btn.onclick = () => {
+            selectModal.classList.remove('active');
         }
     })
 }
@@ -89,14 +106,18 @@ if (selectModalOpen.length) {
 
 if (selectModal) {
     selectModal.onmousemove = e => {
-        if (window.innerWidth / 2 > e.clientX) {
-            contentLeftShow();
-        } else {
-            ContentRightShow();
+        if (window.innerWidth > 1000) {
+            if (window.innerWidth / 2 > e.clientX) {
+                contentLeftShow();
+            } else {
+                ContentRightShow();
+            }
         }
     }
     selectModal.onmouseleave = e => {
-        ContentHide();
+        if (window.innerWidth > 1000) {
+            ContentHide();
+        }
     }
 }
 
@@ -104,7 +125,26 @@ let contentLeft = document.querySelector('.select_modal .content_left'),
     contentRight = document.querySelector('.select_modal .content_right'),
     parentBtn = document.querySelector('.select_modal .swiper-parent__btn'),
     parentSlide = document.querySelector('.select_modal .swiper-parent'),
-    swiperChildWrap = document.querySelector('.select_modal .swiper-child_wrap');
+    swiperChildWrap = document.querySelector('.select_modal .swiper-child_wrap'),
+    selectContentBtn = document.querySelector('.select_modal .toggle_content_btn');
+
+window.addEventListener('resize', function () {
+    if (this.window.innerWidth <= 1000) {
+        contentLeftShow();
+    }
+})
+
+if (window.innerWidth <= 1000) {
+    contentLeftShow();
+}
+
+selectContentBtn.onclick = () => {
+    if (contentLeft.classList.contains('active')) {
+        ContentRightShow();
+    } else {
+        contentLeftShow();
+    }
+}
 
 function contentLeftShow () {
     contentLeft.classList.add('active');
@@ -128,4 +168,11 @@ function ContentHide () {
     parentBtn.classList.remove('active');
     parentSlide.classList.remove('active');
     swiperChildWrap.classList.remove('active')
+}
+
+let mobileMenu = document.querySelector('.mobile_menu'),
+    headerBars = document.querySelector('.header_bars');
+
+headerBars.onclick = () => {
+    mobileMenu.classList.toggle('active');
 }
