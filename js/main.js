@@ -4,9 +4,9 @@ let homeSwp = new Swiper('.home .swiper', {
     effect: 'fade',
     speed: 800,
     loop: true,
-    // autoplay: {
-    //     delay: 4000
-    // },
+    autoplay: {
+        delay: 4000
+    },
     navigation: {
         nextEl: '.home .swiper_btn__next',
         prevEl: '.home .swiper_btn__prev',
