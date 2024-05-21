@@ -336,3 +336,30 @@ if (countryListBtn) {
         countryListSwp.classList.toggle('hidden');
     }
 }
+
+let changeLang = document.querySelectorAll('.change_lang');
+changeLang.forEach(lang => {
+    let langBtn = lang.querySelector('.change_lang__btn'),
+        langList = lang.querySelector('.change_lang__list'),
+        langListBtn = lang.querySelectorAll('.change_lang__list button');
+
+    langBtn.onclick = () => {
+        langList.style.maxHeight = langList.style.maxHeight ? null : langList.scrollHeight + 'px';
+    }
+
+    langListBtn.forEach(b => {
+        b.onclick = () => {
+            langBtn.querySelector('span').textContent = b.textContent;
+            langList.style.maxHeight = null;
+        }
+    })
+})
+
+document.addEventListener('click', (event) => {
+    changeLang.forEach(lang => {
+        const t = event.composedPath().includes(lang);
+        if (!t) {
+            lang.querySelector('.change_lang__list').style.maxHeight = null;
+        }
+    })
+})

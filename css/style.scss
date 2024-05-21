@@ -181,6 +181,7 @@ body {
 
 .change_lang {
     position: relative;
+    z-index: 3;
 
     &__btn {
         border: 1px solid $color-white;
@@ -191,6 +192,32 @@ body {
         display: flex;
         align-items: center;
         gap: 8px;
+    }
+
+    &__list {
+        position: absolute;
+        bottom: -4px;
+        transform: translateY(100%);
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+
+        ul {
+            border: 1px solid $color-white;
+            background: $color-black;
+            border-radius: 4px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            
+            button {
+                width: 100%;
+                color: $color-white;
+                font-size: 16px;
+            }
+        }
     }
 }
 // Header end
@@ -227,6 +254,10 @@ body {
 
         a {
             font-size: 14px;
+        }
+
+        ul {
+            gap: 6px;
         }
     }
 }
