@@ -214,7 +214,7 @@ if (accordions.length) {
 }
 
 let itemModal = document.querySelector('.item_modal'),
-    itemModalOpen = document.querySelectorAll('.catalog__list_item a'),
+    itemModalOpen = document.querySelectorAll('.item_modal__open'),
     itemModalClose = document.querySelector('.item_modal__close');
 
 if (itemModalOpen.length) {
@@ -231,7 +231,7 @@ if (itemModalOpen.length) {
 }
 
 let requestModal = document.querySelector('.request_modal'),
-    requestModalOpen = document.querySelectorAll('.item_modal .btn_dark'),
+    requestModalOpen = document.querySelectorAll('.request_modal__open'),
     requestModalClose = document.querySelector('.request_modal__close');
 
 if (requestModalOpen.length) {
