@@ -631,7 +631,11 @@ body {
   left: 0;
   width: 100%;
   z-index: 2;
-  display: none;
+}
+@media screen and (max-width: 1250px) {
+  .home .swiper_btn {
+    display: none;
+  }
 }
 .home .swiper_btn__container {
   max-width: 1680px;
@@ -684,12 +688,14 @@ body {
   .home__container {
     max-width: calc(100% - 20px);
     padding: 0;
+    padding-left: 132px;
   }
 }
 @media screen and (max-width: 1250px) {
   .home__container {
     max-width: 528px;
     justify-content: flex-start;
+    padding: 0;
     padding-top: 172px;
   }
 }
@@ -736,6 +742,11 @@ body {
 }
 .home__head img {
   width: 23px;
+}
+@media screen and (min-width: 1250px) {
+  .home__head button {
+    display: none;
+  }
 }
 .home .btn_dark {
   width: 416px;

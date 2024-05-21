@@ -687,7 +687,10 @@ body {
             left: 0;
             width: 100%;
             z-index: 2;
-            display: none;
+
+            @include media(1250) {
+                display: none;
+            }
             
             &__container {
                 max-width: 1680px;
@@ -743,11 +746,13 @@ body {
         @include media(1720) {
             max-width: calc(100% - 20px);
             padding: 0;
+            padding-left: 132px;
         }
 
         @include media(1250) {
             max-width: 528px;
             justify-content: flex-start;
+            padding: 0;
             padding-top: 172px;
         }
 
@@ -793,6 +798,12 @@ body {
 
         img {
             width: 23px;
+        }
+
+        button {
+            @include media(-1250) {
+                display: none;
+            }
         }
     }
 
