@@ -327,7 +327,7 @@ body {
   margin: 0 auto;
   margin-top: 50vh;
   transform: translateY(-50%);
-  height: calc(100vh - 246px);
+  height: calc(100svh - 246px);
   display: flex;
   align-items: flex-start;
   position: relative;
@@ -341,13 +341,13 @@ body {
   .select_modal__swipers .main_container {
     max-width: calc(100% - 312px);
     justify-content: space-between;
-    height: calc(100vh - 360px);
+    height: calc(100svh - 360px);
   }
 }
 @media screen and (max-width: 768px) {
   .select_modal__swipers .main_container {
     max-width: calc(100% - 40px);
-    height: calc(100vh - 188px);
+    height: calc(100svh - 188px);
   }
 }
 .select_modal__swipers .main_container::before {
@@ -440,7 +440,6 @@ body {
   color: #919191;
   line-height: 100%;
   text-transform: uppercase;
-  transition: 0.5s ease all;
   white-space: nowrap;
 }
 @media screen and (max-width: 768px) {
@@ -587,7 +586,7 @@ body {
   line-height: 120%;
   letter-spacing: 1%;
   color: #919191;
-  transition: 0.5s ease all;
+  transform: translate(0);
   white-space: nowrap;
 }
 @media screen and (max-width: 1000px) {
@@ -617,13 +616,13 @@ body {
 }
 .home .swiper {
   position: relative;
-  height: 100vh;
+  height: 100svh;
   background: #575656;
 }
 .home .swiper-slide {
   position: relative;
   z-index: 1;
-  height: 100vh;
+  height: 100svh;
 }
 .home .swiper_btn {
   position: absolute;

@@ -367,7 +367,7 @@ body {
             margin: 0 auto;
             margin-top: 50vh;
             transform: translateY(-50%);
-            height: calc(100vh - 246px);
+            height: calc(100svh - 246px);
             display: flex;
             align-items: flex-start;
             position: relative;
@@ -379,12 +379,12 @@ body {
             @include media(1000) {
                 max-width: calc(100% - 156px * 2);
                 justify-content: space-between;
-                height: calc(100vh - 360px);
+                height: calc(100svh - 360px);
             }
 
             @include media(768) {
                 max-width: calc(100% - 40px);
-                height: calc(100vh - 188px);
+                height: calc(100svh - 188px);
             }
 
             &::before {
@@ -476,7 +476,7 @@ body {
                             color: #919191;
                             line-height: 100%;
                             text-transform: uppercase;
-                            transition: .5s ease all;
+                            // transition: .5s ease all;
                             white-space: nowrap;
 
                             @include media(768) {
@@ -635,7 +635,9 @@ body {
                         line-height: 120%;
                         letter-spacing: 1%;
                         color: #919191;
-                        transition: .5s ease all;
+                        // transition: .5s ease font-size;
+                        // -webkit-transition: .5s ease font-size;
+                        transform: translate(0);
                         white-space: nowrap;
 
                         @include media(1000) {
@@ -672,13 +674,13 @@ body {
 
     .swiper {
         position: relative;
-        height: 100vh;
+        height: 100svh;
         background: #575656;
 
         &-slide {
             position: relative;
             z-index: 1;
-            height: 100vh;
+            height: 100svh;
         }
 
         &_btn {
